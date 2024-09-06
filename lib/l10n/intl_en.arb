@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "app_name": "Base Flutter Project",
+  "@app_name": {},
+  "unknown": "Unknown",
+  "@unknown": {},
+  "no_internet_connection": "No internet connection!",
+  "@no_internet_connection": {},
+  "title_cancel": "Cancel",
+  "@title_cancel": {},
+  "title_agree": "Agree",
+  "@title_agree": {}
+}
