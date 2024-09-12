@@ -158,11 +158,11 @@ class _AppColorScheme {
         error: AppColor.jasper,
         onError: AppColor.white,
         background: AppColor.white,
-        onBackground: AppColor.black,
+        onBackground: AppColor.white,
 
         /// used as the base color for elevated UI elements like cards, sheets, dialogs,...
-        surface: AppColor.greyShade700,
-        onSurface: AppColor.black,
+        surface: AppColor.white,
+        onSurface: AppColor.white,
       );
 
   static ColorScheme get darkColorScheme => ColorScheme(

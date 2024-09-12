@@ -1,5 +1,6 @@
 import 'package:base_flutter_app/generated/l10n.dart';
 import 'package:base_flutter_app/src/utils/barrel_utils.dart';
+import 'package:base_flutter_app/src/widgets/example_widgets/example_notification_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,12 +28,7 @@ class _Body extends StatelessWidget {
     return BlocListener<HomeBloc, HomeState>(
       listenWhen: (p, c) => p.statusLoading != c.statusLoading,
       listener: (context, state) {},
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(S.current.app_name), // example use localizations
-        ),
-        body: Container(),
-      ),
+      child: ExpampleNotificationListener(),
     );
   }
 }

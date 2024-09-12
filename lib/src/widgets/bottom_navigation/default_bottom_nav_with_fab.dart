@@ -106,14 +106,29 @@ class _CustomBottomNavWithFABExampleState extends State<CustomBottomNavWithFABEx
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      bottomNavigationBar: Container(
-        height: 60 + MediaQuery.paddingOf(context).bottom,
-        decoration: BoxDecoration(color: Colors.black12),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: _buildItemBottomNav(),
+      // extendBody: true,
+      // bottomNavigationBar: Container(
+      //   height: 60 + MediaQuery.paddingOf(context).bottom,
+      //   decoration: BoxDecoration(color: Colors.black12),
+      //   child: Row(
+      //     mainAxisSize: MainAxisSize.max,
+      //     mainAxisAlignment: MainAxisAlignment.start,
+      //     children: _buildItemBottomNav(),
+      //   ),
+      // ),
+      body: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.all(40.0),
+          child: ClipPath(
+            clipper: TicketClipper(),
+            child: Container(
+              height: 120,
+              width: double.maxFinite,
+              color: Colors.orange,
+              alignment: Alignment.topCenter,
+              child: Text("Phim hay"),
+            ),
+          ),
         ),
       ),
       // floatingActionButton: Container(
@@ -147,6 +162,70 @@ class _CustomBottomNavWithFABExampleState extends State<CustomBottomNavWithFABEx
       }
     }
     return navItems;
+  }
+}
+
+class TicketClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    double borderRadius = 15;
+    double width = size.width;
+    double height = size.height;
+    double rheight = height - height / 3;
+    double oneThird = width / 3;
+
+    final path = Path()
+      ..lineTo(0, rheight - borderRadius)
+      ..cubicTo(0, rheight - borderRadius, 0, rheight, borderRadius, rheight)
+      ..lineTo(oneThird, rheight)
+      ..lineTo(width / 2 - borderRadius, height - borderRadius)
+      ..cubicTo(width / 2 - borderRadius, height - borderRadius, width / 2, height,
+          width / 2 + borderRadius, height - borderRadius)
+      ..lineTo(2 * oneThird, rheight)
+      ..lineTo(width - borderRadius, rheight)
+      ..cubicTo(width - borderRadius, rheight, width, rheight, width, rheight - borderRadius)
+      ..lineTo(width, 0)
+      ..lineTo(0, 0);
+    return path;
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return this != oldClipper;
+  }
+}
+
+class MyCustomClipper extends CustomClipper<Path> {
+  const MyCustomClipper();
+
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0.0, size.height);
+    double x = 0;
+    double y = size.height;
+    double yControlPoint = size.height * 0.85;
+    double increment = size.width / 12;
+
+    while (x < size.width) {
+      path.quadraticBezierTo(x + increment / 2, yControlPoint, x + increment, y);
+      x += increment;
+    }
+
+    path.lineTo(size.width, 0.0);
+
+    while (x > 0) {
+      path.quadraticBezierTo(x - increment / 2, size.height * .15, x - increment, 0);
+      x -= increment;
+    }
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return oldClipper != this;
   }
 }
 

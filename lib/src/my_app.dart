@@ -28,14 +28,14 @@ class MyApp extends StatelessWidget {
         }
       },
       onGenerateRoute: AppRouter.onGenerateRoute,
-      // initialRoute: AppRouter.HOME_SCREEN,
-      home: CustomBottomNavWithFABExample(
-        fabLocation: FABLocation.center,
-      ),
-      // app theme
-      themeMode: ThemeMode.system,
-      darkTheme: AppTheme.dark,
-      theme: AppTheme.light,
+      initialRoute: AppRouter.HOME_SCREEN,
+      // home: CustomBottomNavWithFABExample(
+      //   fabLocation: FABLocation.center,
+      // ),
+      // // app theme
+      // themeMode: ThemeMode.system,
+      // darkTheme: AppTheme.dark,
+      // theme: AppTheme.light,
     );
   }
 }
